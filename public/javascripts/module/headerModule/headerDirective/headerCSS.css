@@ -1,0 +1,79 @@
+.dropbtn {
+    background-color: #dddddd;
+    color: black;
+    padding: 12px;
+    padding-right:20px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #dddddd;
+    text-decoration: none;
+    color: black;
+    
+}
+
+.dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    padding: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dddddd;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    font-size: 16px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding-right:20px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #dddddd
+}
+
+.show {
+    display: block;
+}
+
+.boxtesto {
+    /* box del testo sull' immagine*/
+    position: relative;
+    bottom: 150px;
+    left: 0px;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.marginBottom-0 {margin-bottom:0;}
+
+
+/* da esempio bootply */
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-2px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+.dropdown-submenu:hover>.dropdown-menu{display:block;} /* Mostra i submenu */
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#000000;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+
+
+

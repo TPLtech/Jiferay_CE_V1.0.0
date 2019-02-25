@@ -1,0 +1,119 @@
+<div class="containerNavbar" style="padding-top:50px" ng-init="initAll()">
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom:30px;  background-color:#dddddd; " id="n">
+
+        <div>
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" ng-click="openComboSignIn()">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ui-sref="home" style="padding-top:0px;padding-left:0px;"> <img src="../images/jiferayLogo.png" alt="Jifeary" height="60px" width="150px"> </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+
+                    <li ng-repeat="x in baseMenus track by $index" class="dropdown">
+
+                        <!-- Se id_page è vuota allora è una dropdown -->
+                        <a href="#" ng-if="x.id_page == '' " class="dropdown-toggle" data-toggle="dropdown" id="{{x.id_page}}" ng-click="checkPage(x.id,x.id_page)">{{x.nome}}</a>
+                        <!-- Altrimenti è una pagina -->
+                        <a href="#" ng-if="x.id_page != '' " id="{{x.id_page}}" ng-click="checkPage(x.id,x.id_page)">{{x.nome}}</a>
+                        <!-- 1° Livello -->
+                        <ul class="dropdown-menu">
+                            <!-- Mostra i sottomenu corretti per ogni voce -->
+                            <li ng-repeat="x in submenus track by $index" ng-class="checkSub(x.id_page)" ng-if="x.id_parent == idlvl0" ng-click="checkPage(x.id,x.id_page)" ng-mouseover="checkParent(x.id,x.branch)">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:200px;" id="{{x.id_page}}">{{x.nome}}</a>
+                                <!-- 2° Livello -->
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="x in submenus2 track by $index" ng-class="checkSub(x.id_page)" ng-click="checkPage(x.id,x.id_page)" ng-if="x.id_parent == idlvl1" ng-mouseover="checkParent(x.id,x.branch)">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>
+                                        <!--<a href="#" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>-->
+                                        <!-- 3° livello -->
+                                        <ul class="dropdown-menu">
+                                            <li ng-repeat="x in submenus3 track by $index" ng-class="checkSub(x.id_page)" ng-click="checkPage(x.id,x.id_page)" ng-if="x.id_parent == idlvl2" ng-mouseover="checkParent(x.id,x.branch)">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>
+                                                <!--<a href="#" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>-->
+                                                <!-- 4° livello -->
+                                                <ul class="dropdown-menu">
+                                                    <li ng-repeat="x in submenus4 track by $index" ng-class="checkSub(x.id_page)" ng-click="checkPage(x.id,x.id_page)" ng-if="x.id_parent == idlvl3" ng-mouseover="checkParent(x.id,x.branch)">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:200px; left=0" id="{{x.id_page}}">{{x.nome}}</a>
+                                                        <!--<a href="#" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>-->
+                                                        <!-- 5° livello -->
+                                                        <ul class="dropdown-menu">
+                                                            <li ng-repeat="x in submenus5 track by $index" ng-class="checkSub(x.id_page)" ng-click="checkPage(x.id,x.id_page)" ng-if="x.id_parent == idlvl4" ng-mouseover="checkParent(x.id,x.branch)">
+                                                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>-->
+                                                                <a href="#" style="width:200px" id="{{x.id_page}}">{{x.nome}}</a>
+                                                                <!-- 5° livello -->
+                                                                <!--<ul class="dropdown-menu">-->
+
+                                                                <!--</ul>-->
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+
+                    <!--lang-->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><img ng-src="{{image_lang_selected}}" alt="{{image_lang_selected}}"> {{lang_selected}}<span class="caret" ></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="x in lingue">
+                                <a class="js_change_lang" ng-click="setLangCurrent_and_load_res(x.lang,x.label,x.image,1)" style="cursor:pointer"><img ng-src="{{x.image}}"> {{x.label}}</a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right" style="height:auto">
+                    <div class="dropdown">
+                        <!--<a class="dropdown-toggle dropbtn" data-toggle="dropdown" href="#" ng-model="sign_in_button">{{sign_in_button}}</a>-->
+                        <a class="btn dropdown-toggle dropbtn" type="button" data-toggle="dropdown" ng-model="sign_in_button">{{sign_in_button}}&#32;&#32;
+                        <span class="glyphicon glyphicon-user"></span> &#32;
+                        </a>
+                        <ul ng-show="myDropdown" class="dropdown-menu dropdown-content dropdown-menu-right">
+                            <li><a href="#" class="dropbtn" ui-sref="login">Login</a></li>
+                            <li><a href="#" class="dropbtn" ui-sref="signup">Signup</a></li>
+                            <li><a href="#" class="dropbtn" ui-sref="home">Home</a></li>
+                        </ul>
+
+                        <ul ng-show="myDropdownLogged" class="dropdown-menu dropdown-content dropdown-menu-right">
+                            <li>{{name_user}}</li>
+                            <li><a href="#" class="dropbtn" ui-sref="home">Home</a></li>
+                            <li><a href="#" class="dropbtn" ng-click="funcLogOut()">Logout</a></li>
+                        </ul>
+
+                        <ul ng-show="myDropdownLoggedAdmin" class="dropdown-menu dropdown-content dropdown-menu-right">
+
+                            <li><a href="#" class="dropbtn" ui-sref="home">Home</a></li>
+                            <li><a href="#" class="dropbtn" ui-sref="administration">Admin Dev</a></li>
+                            <li><a href="#" class="dropbtn" ng-click="funcLogOut()">Logout</a></li>
+                        </ul>
+
+                    </div>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+</div>

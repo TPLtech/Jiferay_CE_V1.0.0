@@ -1,0 +1,288 @@
+<style>
+    .dropbtnL {
+        background-color: #BBBBBB;
+        color: black;
+        /*padding: 16px;*/
+        font-size: 40px;
+        border: none;
+        cursor: pointer;
+        /*vertical-align: bottom;*/
+        margin-bottom: 0px;
+    }
+
+    .dropbtnL1 {
+        background-color: white;
+        color: black;
+        /*padding: 16px;*/
+        font-size: 40px;
+        border: none;
+        cursor: pointer;
+        /*vertical-align: bottom;*/
+        margin-bottom: 0px;
+    }
+
+
+
+    .dropdownL-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    .dropdownL-content a {
+        color: black;
+        display: block;
+    }
+
+    .dropdownL-content a:hover {
+        background-color: #f1f1f1
+    }
+
+    .dropdownL:hover .dropdownL-content {
+        display: block;
+    }
+
+    .dropdownL:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+
+
+
+
+
+
+    /**   D&D 21/09/17
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop into it once it's empty
+ */
+
+    .multiDemo ul[dnd-list] {
+        min-height: 42px;
+        padding-left: 0px;
+    }
+
+    /**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+
+    .multiDemo ul[dnd-list] .dndPlaceholder {
+        background-color: #ddd;
+        display: block;
+        min-height: 42px;
+    }
+
+    .multiDemo ul[dnd-list] li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        display: block;
+        margin-bottom: -1px;
+        padding: 10px 15px;
+    }
+
+    /**
+ * Show selected elements in green
+ */
+
+    .multiDemo ul[dnd-list] li.selected {
+        background-color: #dff0d8;
+        color: #3c763d;
+    }
+</style>
+
+
+<div class="container-fluid" ng-init="initAll()">
+
+    <table>
+        <tr>
+            <td>
+                <div class="dropdown">
+                    <h2> {{lr("CARICAMENTO RISORSE IN LINGUA")}}: </h2>
+            </td>
+            </div>
+            <td>
+                <div class="dropdown">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            </td>
+            </div>
+            <td>
+                <div class="dropdown"><br>
+                    <a class="dropdown-toggle" data-toggle="dropdown"><img src="{{Aimage_lang_selected}}" alt="{{Aimage_lang_selected}}"> {{Alang_selected}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="x in lingue">
+                            <a class="js_change_lang" ng-click="setLangCurrent(x.lang,x.label,x.image)"><img ng-src="{{x.image}}"> {{x.label}}</a>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+
+
+    <div class="table-responsive">
+        <table style="border:1px solid grey;" class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th class="text-center"></th>
+                    <th class="text-center">{{lr("Nuovo")}}</th>
+                    <th class="text-center">
+                        <nobr>{{lr("Risorse in Lingua standard")}}</nobr>
+                    </th>
+                    <th class="text-center">
+                        <nobr> {{lr("Risorse Nella Lingua da caricare")}}</nobr>
+                    </th>
+                    <th class="text-center">
+                        <nobr>{{lr("Pagina")}}</nobr>
+                    </th>
+                    <th class="text-center">
+                        <nobr>Div</nobr>
+                    </th>
+                </tr>
+            </thead>
+
+
+            <thead>
+                <tr>
+                    <th>
+                        <div class="input-group">
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="input-group">
+                            <input ng-model="filtro.new" id="search" class="form-control input-sm" placeholder="">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit" ng-click="clearSearch()"><a>x</a></button>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="input-group">
+                            <input ng-model="filtro.standard_lang_resource" id="search" class="form-control input-sm" placeholder="">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit" ng-click="clearSearch()"><a>x</a></button>
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="input-group">
+                            <input ng-model="filtro.lang_resource" id="search" class="form-control input-sm" placeholder="">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit" ng-click="clearSearch()"><a>x</a></button>
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="input-group">
+                            <input ng-model="filtro.page_state_provid" id="search" class="form-control input-sm" placeholder="">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit" ng-click="clearSearch()"><a>x</a></button>
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="input-group">
+                            <input ng-model="filtro.div_in_page" id="search" class="form-control input-sm" placeholder="">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit" ng-click="clearSearch()"><a>x</a></button>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+
+
+            <tbody dir-paginate="row in resource | filter:filtro | itemsPerPage: pageSize" current-page="currentPage" id="tabella" pagination-id="row">
+                <tr>
+                    <td>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="submit" title="cancella" ng-click="delete(row.id)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </td>
+
+                    <td>
+                        <nobr>{{row.new}}</nobr>
+                    </td>
+
+                    <td>
+                        <nobr>{{row.standard_lang_resource}}</nobr>
+                    </td>
+                    <td>
+                        <!--evento ng-blur-->
+
+
+                        <input type="text" ng-model-options="{ updateOn: 'default blur' }" ng-model="row.lang_resource" ng-blur="saveResource(row.lang_resource,row.id)" style="width:100%; border-style: hidden;" />
+
+
+                    </td>
+                    <td>
+                        <nobr>{{row.page_state_provid}}</nobr>
+                    </td>
+                    <td>
+                        <nobr>{{row.div_in_page}}</nobr>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <center>
+                <div class="col-xs-3"></div>
+                <div class="col-xs-5">
+                    <h4>{{lr("Pagine")}}</h4>
+                    <dir-pagination-controls boundary-links="true" template-url="/javascripts/content/pagination/dirPagination.html" pagination-id="row"></dir-pagination-controls>
+                </div>
+                <div class="col-xs-1">
+                    <h6 for="search">{{lr("elementi per pagina")}}:</h6>
+                    <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                </div>
+                <div class="col-xs-3" />
+            </center>
+        </div>
+
+        <br>
+        <br>
+
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="newModal()">{{lr("Nuovo Contenuto")}}</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{lr("Inserimento di un Nuovo Contenuto Letterario")}}</h4>
+                    </div>
+                    <div class="form-group">
+                        <label>{{lr("Contenuto Letterale")}}</label>
+                        <input type="text" class="form-control" ng-model="newlr">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="SaveLR()" data-dismiss="modal">{{lr("Salva")}}</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{lr("Chiudi")}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    
+    <button ng-click="lrExtraction()">lrExtraction</button>
+    
+</div>

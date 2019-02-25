@@ -1,0 +1,222 @@
+<style type="text/css">
+    div.boxtesto {
+        /* box del testo sull' immagine*/
+        position: relative;
+        bottom: 650px;
+        left: 0px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0);
+        text-align: right;
+        padding-right: 60px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        /* quando la larghezza scende sotto i 720px*/
+        div.boxtesto {
+            /* box del testo sull' immagine*/
+            position: relative;
+            bottom: 200px;
+            left: 0px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0);
+            text-align: right;
+            padding-right: 60px;
+        }
+    }
+
+    .im {
+        /* immagine*/
+        height: 544px;
+        position: relative;
+        padding: 0;
+        display: block;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 720px) {
+        /* quando la larghezza scende sotto i 720px*/
+        .img-responsive {
+            height: 250px;
+            width: 100%;
+        }
+    }
+
+
+    body {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+    }
+</style>
+
+
+
+<div class="container">
+
+    <div id="includedContent" ng-include="getPartial(block.title)"></div>
+    <!--<div id="includedContent" ></div>-->
+
+    <br><br>
+
+    <div>
+        <div ng-show="divShow_webMast">
+
+            <br>
+
+            <div style="border-style: solid; ">TEXTAREA<br>
+                <!--<label>{{lr("Upload Da PC di pagine")}} .HTML (o .txt)-----------------------------------------------------------------------</label><br>-->
+                <textarea ng-model="txt_001" style="width:100%" rows="10" cols="50"></textarea>
+                <!--<br><br> {{lr("Page name")}}:<label>{{pageName}}</label><br>-->
+            </div>
+            <div style="border-style: solid; "> CARICAMENTO DI FILE HTML DA DESKTOP <br>
+
+                <br><br> Page name:<label>{{pageName}}</label><br>
+
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <!--<h4 class="modal-title">{{lr("Seleziona un file")}}</h4>-->
+                                <h4 class="modal-title">Seleziona un file</h4>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="">
+                                    <li ng-repeat="x in fileNames"><a href="#" style="width:200px" ng-click="fileuploadREPO(x)" data-dismiss="modal">{{x}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <!--<button type="button" class="btn btn-default" data-dismiss="modal">chiudi</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <form action="/fileUploadPC" method="post" enctype="multipart/form-data">
+                    <input type="file" name="filetoupload" value="" read-text="onFileSelect($files)" style="float:left">
+                    <!--read-text="onFileSelect($files)" lega la input alla directive "readText"-->
+                    <input value="Upload selected file from PC into Repository" type="submit">
+                </form>
+                <!--<button ng-click="loadFileAsText()">{{lr("Load file selected from PC into textarea")}}</button>-->
+                <button ng-click="loadFileAsText()">Load file selected from PC into textarea</button>
+                <!--<br> Name of the file where text will be save in Repository:<label>{{pageName}}</label> + <input ng-model="inputFileName_num"></input><b>.txt</b>-->
+                <!--<button ng-click="savePage()">{{lr("Save text into Repository")}}</button>-->
+                <button ng-click="savePage()">Save text into Repository</button>
+
+            </div>
+
+
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <div style="border-style: solid; "> CARICAMENTO DI IMMAGINI DA DESKTOP
+
+
+                <div id="myModalImg" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <!--<h4 class="modal-title">{{lr("Seleziona un file")}}</h4>-->
+                                <!--<h4 class="modal-title">{{lr("Seleziona un file")}}</h4>-->
+                                <h4 class="modal-title">Seleziona un file</h4>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="">
+                                    <li ng-repeat="x in imgNames"><a href="#" style="width:200px" ng-click="imguploadREPO(x)" data-dismiss="modal">{{x}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <!--<button type="button" class="btn btn-default" data-dismiss="modalImg">chiudi</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br>
+
+                <form id="form1" action="/imgUploadPCtemplate" method="post" enctype="multipart/form-data" target="frameImagePath">
+
+                    <b>
+                <!--<label>{{lr("Select image to upload")}}:</b>-->
+                    <label>Select image to upload:</b>
+                    <img id="blah" alt="your image" width="100" height="100" />
+                    <input type="hidden" id="form1_url_site" name="form1_url_site">
+                    <input type="hidden" id="form1_hname" name="form1_hname">
+                    <input type="hidden" id="form1_hpagename" name="form1_hpagename">
+                    <input type="file" id="imageToUpload" name="imageToUpload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+
+                    <input value="Upload selected image from PC into /img" ng-click="goForm()" type="submit">
+
+                </form>
+
+
+
+                <!--<input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">-->
+
+
+                <iframe name="frameImagePath" id="frameImagePath" width="200" height="50"> </iframe>
+
+                <script>
+                    var loadFile = function(event) {
+                        var output = document.getElementById('imageToUpload');
+                        output.src = URL.createObjectURL(event.target.files[0]);
+                    };
+                </script>
+                <br><br>
+
+                <!--<button ng-click="leggiImgPagine()" data-toggle="modal" data-target="#myModalImg">{{lr("List")}} /img {{lr("files, select one to load it in textarea")}}</button>-->
+                <button ng-click="leggiImgPagine()" data-toggle="modal" data-target="#myModalImg">List /img files, select one to load it in textarea</button>
+                <img src="{{img_001}}" style="width:100px;height:100px"></img><br>
+                <h4 style="color:red">{{imgurl}}</h4>
+            </div>
+
+                <div style="border-style: solid; "> CARICAMENTO DI FILE DA REPOSITORY <br>
+
+                        <br>
+                        <!--<button ng-click="leggiFileTxtPagine()" data-toggle="modal" data-target="#myModal">{{lr("List Repository files, select one to load it in textarea")}}</button>-->
+                        <button ng-click="leggiFileTxtPagine()" data-toggle="modal" data-target="#myModal">List Repository files, select one to load it in textarea</button>
+                        <br><br>
+                        <!--{{pageName}}-->
+
+                        File selected from Repository: {{lr("File selected from Repository")}}:
+                        <h2 style="color:red">{{inputFileName_num}}</h2>
+
+
+                        <br><br>
+                        </div>
+
+                <div style="border-style: solid; "> CARICAMENTO DI FILE DA REPOSITORY <br>
+                        <button ng-click="preview()">Preview text in HTML page</button><br><br>
+                </div>
+
+                <div style="border-style: solid; "> CARICAMENTO DI FILE DA REPOSITORY <br>
+                       
+                        <button ng-click="savePage()">Salva la pagina e pubblicala</button><br><br>
+                        <div style="background-color:white;" ng-bind-html="divPreview" style="border-style: solid; border-width: 1px; width:100%">
+                            <!--div di preview-->
+                        </div>
+                </div>
+
+
+                <div ng-model="vid_001"></div>
+
+                <div ng-model="aud_001"></div>
+
+
+            </div>
+
+
+        </div>
+    </div>

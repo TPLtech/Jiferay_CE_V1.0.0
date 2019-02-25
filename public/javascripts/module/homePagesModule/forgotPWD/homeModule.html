@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1 id="colore"><span class="fa fa-sign-in"></span>{{lr("Recupero Password")}}</h1>
+            <div ng-show="showfirstDiv">
+                <h3>{{lr("Inserisci qui di seguito il tuo nome utente")}}.</h3>
+                <h4>{{lr("Invieremo un email all'indirizzo di posta associato contenente un link per reimpostare la password")}}</h4>
+                <br>
+                <div>
+                    <div class="form-group">
+                        <label id="colore">{{lr("Nome Utente")}}</label>
+                        <input type="text" class="form-control" ng-model="username_for" ng-blur="controlloUser()">
+                        <label id="err" ng-show="errUsername">{{lr("Inserisci Nome Utente")}}!</label>
+                    </div>
+                    <button class="btn btn-success btn-lg" ng-click="recuperaPassword()">{{lr("Recupera")}}</button>
+                    <br>
+                </div>
+            </div>
+            <br>
+
+            <div ng-hide="showfirstDiv">
+                <h3>{{lr("L'email è stata inviata, controllare la propria casella di posta")}}.</h3>
+            </div>
+            
+            <div>
+                <p><a ui-sref="forgotUser">{{lr("Nome Utente Dimenticato")}}?</a></p>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

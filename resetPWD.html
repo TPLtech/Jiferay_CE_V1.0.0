@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <title>JIFERAY</title>
+    <link rel="shortcut icon" href="/images/Jiferay_icon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="utf-8">
+    <meta name="description" content="Bellatores è un’associazione/ente no profit che nasce per dare modo a più elementi di partecipare e
+organizzare : eventi, tornei, viaggi, attività sportive, corsi, training, Larp (giochi di ruolo su varie
+ambientazioni), team building, addii al celibato/nubilato di alto livello">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Airsoft,Softair,Poligono,Difesa,Personale,MilSim,Simulazione,Militare,Armi,Benessere,Fisico">
+
+
+    <script src="/javascripts/content/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <!--CSS/Less Include-->
+    <link rel="stylesheet" href="/javascripts/content/bootstrap/dist/css/bootstrap.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="/javascripts/module/homePagesModule/content/contentModule.css" />
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+
+
+
+
+</head>
+
+<body>
+    <!--this is the central page of angular mono page application-->
+
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>Reimposta password</h1>
+        <form action="/POSTResetPWD" method="post" class="form-group">
+            <label>Password Temporanea</label>
+            <input type="password" name="tmp_pwd" class="form-control">
+            <br>
+            <label>Password</label>
+            <input type="password" name="psw1" class="form-control">
+            <br>
+            <label>Conferma Password</label>
+            <input type="password" name="psw2" class="form-control">
+            <br>
+            <input type="hidden" name="id" value="' + req.query.id + '">
+            <input type="hidden" name="emailCrypt" value="' + req.query.email + '">
+            <input type="submit" value="Imposta Password" class="btn btn-success btn-lg">
+        </form>
+    </div>
+    <div id="cookieConsent">
+        <div id="closeCookieConsent">x</div>
+        Questo sito web utilizza i cookies per offrirti una migliore esperienza di navigazione; <a ui-sref="noteLegali">Maggiori Informazioni</a>. <a class="cookieConsentOK">Accetto</a>
+    </div>
+    <!--script for cookieConsent-->
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $("#cookieConsent").fadeIn(200);
+            }, 1000);
+            $("#closeCookieConsent, .cookieConsentOK").click(function() {
+                $("#cookieConsent").fadeOut(200);
+            });
+        });
+    </script>
+    <!--style for cookieConsent-->
+    <style>
+        #cookieConsent {
+            background-color: rgba(20, 20, 20, 0.8);
+            min-height: 26px;
+            font-size: 14px;
+            color: #ccc;
+            line-height: 26px;
+            padding: 8px 0 8px 30px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 9999;
+        }
+
+        #cookieConsent a {
+            color: #4B8EE7;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #closeCookieConsent {
+            float: right;
+            display: inline-block;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+            margin: -15px 0 0 0;
+            font-weight: bold;
+        }
+
+        #closeCookieConsent:hover {
+            color: #FFF;
+        }
+
+        #cookieConsent a.cookieConsentOK {
+            background-color: #F1D600;
+            color: #000;
+            display: inline-block;
+            border-radius: 5px;
+            padding: 0 20px;
+            cursor: pointer;
+            float: right;
+            margin: 0 60px 0 10px;
+        }
+
+        #cookieConsent a.cookieConsentOK:hover {
+            background-color: #E0C91F;
+        }
+    </style>
+
+
+</body>
+
+</html>

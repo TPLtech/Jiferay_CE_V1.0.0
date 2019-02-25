@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1 id="colore"><span class="fa fa-sign-in"></span>{{lr("Recupero Nome Utente")}}</h1>
+            <div ng-show="showfirstDiv">
+                <h3>{{lr("Inserisci qui di seguito la tua e-mail")}}</h3>
+                <h4>{{lr("Invieremo un e-mail all'indirizzo di posta inserito contente le credenziali")}}</h4>
+                <br>
+                <div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="text" class="form-control" ng-model="email_for" ng-blur="controlloMail()">
+                        <label id="err" ng-show="errMail">{{lr("Inserisci Email")}}!</label>
+                    </div>
+                    <button class="btn btn-success btn-lg" ng-click="recuperaUsername()">{{lr("Recupera")}}</button>
+                    <br>
+                </div>
+            </div>
+            <hr>
+
+            <div ng-hide="showfirstDiv">
+                <h3>{{lr("L'email è stata inviata, controllare la propria casella di posta")}}.</h3>
+            </div>
+
+            <div>
+                <p><a ui-sref="forgotPWD">{{lr("Password Dimenticata")}}?</a></p>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+    <div>
+        <textarea ng-model="txt_001" style="width:100%" rows="10" cols="50"></textarea>
+        <br><br> Page name:<label>{{pageName}}</label><br>
+        <label>Upload Da PC di pagine .HTML (o .txt)-----------------------------------------------------------------------</label><br>
+       <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Seleziona un file</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="">
+                            <li ng-repeat="x in fileNames"><a href="#" style="width:200px" ng-click="fileuploadREPO(x)" data-dismiss="modal">{{x}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form action="/fileUploadPC" method="post" enctype="multipart/form-data">
+            <input type="file" name="filetoupload" value="" read-text="onFileSelect($files)" style="float:left">
+            <!--read-text="onFileSelect($files)" lega la input alla directive "readText"-->
+            <input value="Upload selected file from PC into Repository" type="submit">
+        </form>
+        <button ng-click="loadFileAsText()">Load file selected from PC into textarea</button>
+        <br> Name of the file where text will be save in Repository:<label>{{pageName}}</label> + <input ng-model="inputFileName_num"></input><b>.txt</b>
+        <button ng-click="saveTextInTextarea()">Save text into Repository</button>
+
+    </div>
+    <br>
+    
+            <label>Upload Da Repository di pagine .HTML (o .txt)-----------------------------------------------------------------------</label><br>
+
+    <br>
+    <button ng-click="leggiFileTxtPagine()" data-toggle="modal" data-target="#myModal">List Repository files, select one to load it in textarea</button>
+    <br>File selected from Repository:<label>{{pageName}}</label> + <input ng-model="inputFileName_num"></input><b>.txt</b>
+    <br><br>
+    <button ng-click="insertText()">Preview text in HTML page</button><br><br>
+    <div ng-bind-html="divSiteText" style="border-style: solid; border-width: 1px; width:100%">
+
+    </div>
+
+    <div ng-model="vid_001"></div>
+
+    <div ng-model="aud_001"></div>
+
+</div>
