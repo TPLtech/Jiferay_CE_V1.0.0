@@ -3,7 +3,7 @@
 
 <h3>Come installare e avviare il progetto</h3>
 <p>
-  1 - Effettuare il download del progetto
+  1 - Effettuare il download tramite Github
   <br>
   2 - Creare un nuovo Database importando il file <b>Jiferay_V_1_0_0.sql</b>
   <br>
