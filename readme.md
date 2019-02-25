@@ -1,7 +1,7 @@
 <h1>Jiferay CE V1.0.0</h1>
 <h2>Il Portale WEB scritto interamente in Javascript</h2>
 
-<h3>Come avviare il progetto</h3>
+<h3>Come installare e avviare il progetto</h3>
 <p>
   1 - Effettuare il download del progetto
   <br>
