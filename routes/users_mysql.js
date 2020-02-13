@@ -10,7 +10,7 @@ global.mysqlHost = 'localhost';
 global.mysqlPort = '3306';
 global.mysqlUser = 'user';
 global.mysqlPassword = 'password';
-global.mysqlDatabase = 'jiferay_ce_v1_0_0';
+global.mysqlDatabase = 'jiferay';
 
 
 
@@ -171,7 +171,7 @@ app.get('/ResetPW', function(req, res) {
             }
             else {
 
-                var pwCrypt = bcrypt.hashSync(1234, null, null);
+                var pwCrypt = bcrypt.hashSync(2777, null, null);
                 cmdSql = "UPDATE users SET password ='" + pwCrypt + "', flagChangePW = 0 WHERE email ='" + email + "';";
                 console.log("cmdSql" + cmdSql);
 

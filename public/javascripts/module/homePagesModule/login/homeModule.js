@@ -134,7 +134,7 @@ angular.module('loginModule')
 
                     console.log("numero gruppi : " + response.data[1].length);
 
-                    if (response.data[1].length <= 1) { //È presente un solo gruppo relativo a quell'utente
+                    if (response.data[1].length == 1) { //È presente un solo gruppo relativo a quell'utente
                         
                         console.log("presente solo 1 gruppo");
                         console.log(response.data[1][0].id_group);

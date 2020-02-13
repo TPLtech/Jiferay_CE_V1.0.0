@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
--- Host: localhost    Database: jiferay_ce_v1_0_0
+-- Host: jportal1.tplinfo.com    Database: prova2_jiferay
 -- ------------------------------------------------------
--- Server version	8.0.19
+-- Server version	5.7.23
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -16,14 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `GalleryImages`
+--
+
+DROP TABLE IF EXISTS `GalleryImages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `GalleryImages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `location` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `GalleryImages`
+--
+
+LOCK TABLES `GalleryImages` WRITE;
+/*!40000 ALTER TABLE `GalleryImages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `GalleryImages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `club`
 --
 
 DROP TABLE IF EXISTS `club`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `club` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(64) NOT NULL,
   `indirizzo` varchar(128) NOT NULL,
   `coverImg` varchar(128) NOT NULL DEFAULT './images/silbury-hill-hero.jpg',
@@ -58,14 +82,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `feedback`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `feedback` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(64) DEFAULT NULL,
   `page` varchar(64) DEFAULT NULL,
   `title` varchar(45) DEFAULT NULL,
   `feed` varchar(2048) DEFAULT NULL,
-  `score` int DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
   `photo` varchar(256) DEFAULT NULL,
   `star` varchar(256) DEFAULT NULL,
   `dt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -84,38 +108,14 @@ LOCK TABLES `feedback` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `galleryimages`
+-- Table structure for table `groups`
 --
 
-DROP TABLE IF EXISTS `galleryimages`;
+DROP TABLE IF EXISTS `groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `galleryimages` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(256) NOT NULL,
-  `location` varchar(256) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `galleryimages`
---
-
-LOCK TABLES `galleryimages` WRITE;
-/*!40000 ALTER TABLE `galleryimages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `galleryimages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `groupps`
---
-
-DROP TABLE IF EXISTS `groupps`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `groupps` (
-  `id` int NOT NULL AUTO_INCREMENT,
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -123,13 +123,13 @@ CREATE TABLE `groupps` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `groupps`
+-- Dumping data for table `groups`
 --
 
-LOCK TABLES `groupps` WRITE;
-/*!40000 ALTER TABLE `groupps` DISABLE KEYS */;
-INSERT INTO `groupps` VALUES (1,'admin','admin'),(2,'webmaster','webmaster'),(3,'tecnici','tecnici');
-/*!40000 ALTER TABLE `groupps` ENABLE KEYS */;
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` VALUES (1,'admin','admin'),(2,'webmaster','webmaster'),(3,'tecnici','tecnici');
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -138,9 +138,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `lang_resources`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lang_resources` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `page_state_provid` varchar(32) DEFAULT NULL,
   `div_in_page` varchar(32) DEFAULT NULL,
   `standard_lang_resource` varchar(1024) DEFAULT NULL,
@@ -167,9 +167,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `languages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `languages` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `lang` varchar(32) NOT NULL,
   `label` varchar(32) NOT NULL,
   `image` varchar(256) NOT NULL,
@@ -193,10 +193,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `menu_jportal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu_jportal` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_parent` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_parent` int(11) DEFAULT NULL,
   `lang` varchar(5) DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
@@ -215,7 +215,7 @@ CREATE TABLE `menu_jportal` (
 
 LOCK TABLES `menu_jportal` WRITE;
 /*!40000 ALTER TABLE `menu_jportal` DISABLE KEYS */;
-INSERT INTO `menu_jportal` VALUES (1,0,'it-IT','Home','home',NULL,'BASE','0','home','0'),(2,0,'it-IT','Personal Page','personal_page','','NESSUNO','0','persPage','0'),(19,0,'it-IT','Contattaci','Contattaci',NULL,'0','0','Contattaci','5'),(21,0,'it-IT','Lingue','Risorse Lingue',NULL,'1','0','reslang','0'),(33,0,'it-IT','Servizi','',NULL,'2','0','servizi','0'),(35,0,'it-IT','Progetti','',NULL,'2','0','progetti','1'),(60,0,'it-IT','Chi siamo',NULL,NULL,'0','0','chiSiamo','6'),(73,0,'it-IT','Prodotto',NULL,NULL,'0','0',NULL,'0'),(74,0,'it-IT','Soluzioni',NULL,NULL,'0','0',NULL,'1'),(75,0,'it-IT','Risorse',NULL,NULL,'0','0',NULL,'2'),(76,0,'it-IT','Servizi',NULL,NULL,'0','0','servizi','3'),(77,0,'it-IT','Partner',NULL,NULL,'0','0',NULL,'4'),(108,0,'it-IT','Lingue','Risorse Lingue',NULL,'2','0','reslang','2');
+INSERT INTO `menu_jportal` VALUES (1,0,'it-IT','Home','home',NULL,'BASE','0','home','0'),(2,0,'it-IT','Personal Page','personal_page','','NESSUNO','0','persPage','0'),(19,0,'it-IT','Contattaci','Contattaci',NULL,'0','0','Contattaci','5'),(21,0,'it-IT','Lingue','Risorse Lingue',NULL,'1','0','reslang','0'),(30,0,'it-IT','Home','',NULL,'2','0','home','0'),(31,0,'it-IT','','',NULL,'2','0','home','1'),(33,0,'it-IT','','',NULL,'2','0','Servizi','3'),(35,0,'it-IT','','',NULL,'2','0','Progetti','5'),(60,0,'it-IT','Chi Siamo',NULL,NULL,'0','0','chiSiamo','6'),(73,0,'it-IT','Prodotto',NULL,NULL,'0','0',NULL,'0'),(74,0,'it-IT','Soluzioni',NULL,NULL,'0','0',NULL,'1'),(75,0,'it-IT','Risorse',NULL,NULL,'0','0',NULL,'2'),(76,0,'it-IT','Servizi',NULL,NULL,'0','0',NULL,'3'),(77,0,'it-IT','Partner',NULL,NULL,'0','0',NULL,'4'),(108,0,'it-IT','Lingue','Risorse Lingue',NULL,'2','0','reslang','0');
 /*!40000 ALTER TABLE `menu_jportal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,11 +225,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usergroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usergroups` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_user` int NOT NULL,
-  `id_group` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_group` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -240,7 +240,7 @@ CREATE TABLE `usergroups` (
 
 LOCK TABLES `usergroups` WRITE;
 /*!40000 ALTER TABLE `usergroups` DISABLE KEYS */;
-INSERT INTO `usergroups` VALUES (1,1,1),(8,14,2),(17,16,3),(18,50,2);
+INSERT INTO `usergroups` VALUES (1,1,1),(8,14,2),(17,16,3);
 /*!40000 ALTER TABLE `usergroups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,9 +250,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
   `email` varchar(128) NOT NULL,
   `number` varchar(32) NOT NULL,
@@ -296,7 +296,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `number_UNIQUE` (`number`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,24 +305,28 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','pierangelo.marzona@tplinformatica.com','3356377870','$2a$10$jUz5FQBrmtIUodakyjctuOnPgh2EijFCD8p3HWB1Cy4b5Sj3.gaT2','2017-06-07 14:17:34',1,'359660062356165','Admin','root','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','https://it-it.facebook.com/','https://twitter.com/login?lang=it','https://www.instagram.com/?hl=it','https://www.youtube.com/?gl=IT&hl=it','./images/imagesForPP/19875376_1586602688024808_2327969256718999605_n.jpg','./images/imagesForPP/18581648_1533486513336426_1237597350291554918_n.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'MWF','presidente','it_IT',NULL,NULL,'0'),(14,'webmaster','devfb@tplinformatica.com','123456','$2a$10$OflMadtOicArgZwtcmqTBO5iw4aG.xwCVsD01AAG3PKQWEKnkUb4.','2017-07-20 14:49:57',1,'0','Admin','root','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','https://it-it.facebook.com/','https://twitter.com/login?lang=it','https://www.instagram.com/?hl=it','https://www.youtube.com/?gl=IT&hl=it','./images/imagesForPP/19875376_1586602688024808_2327969256718999605_n.jpg','./images/imagesForPP/18581648_1533486513336426_1237597350291554918_n.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'it_IT',NULL,NULL,'0'),(16,'tecnici','tecnici','111111','$2a$10$1s8Ej23hdHzTj6zLpEY5JeoXTTkgz9YvTti7B3uKEiq3PFeZYwID2','2017-07-20 15:16:31',1,'0','Admin','root','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','https://it-it.facebook.com/','https://twitter.com/login?lang=it','https://www.instagram.com/?hl=it','https://www.youtube.com/?gl=IT&hl=it','./images/imagesForPP/19875376_1586602688024808_2327969256718999605_n.jpg','./images/imagesForPP/18581648_1533486513336426_1237597350291554918_n.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'it_IT',NULL,NULL,'0'),(50,'stefano','stefano.frigerio@tplinformatica.com','3519404789','$2a$10$jUz5FQBrmtIUodakyjctuOnPgh2EijFCD8p3HWB1Cy4b5Sj3.gaT2','2020-02-13 13:49:33',0,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'./images/default-avatar.jpg','./images/silbury-hill-hero.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'it_IT',NULL,NULL,'0');
+INSERT INTO `users` VALUES (1,'admin','pierangelo.marzona@tplinformatica.com','3356377870','$2a$10$GuB2ZSb08vLY348we4c3g.ypPUp89uRQPhY9jXsZJx4/MAMbGVK7i','2017-06-07 14:17:34',1,'359660062356165','Admin','root','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','https://it-it.facebook.com/','https://twitter.com/login?lang=it','https://www.instagram.com/?hl=it','https://www.youtube.com/?gl=IT&hl=it','./images/imagesForPP/19875376_1586602688024808_2327969256718999605_n.jpg','./images/imagesForPP/18581648_1533486513336426_1237597350291554918_n.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'MWF','presidente','it_IT',NULL,NULL,'0'),(14,'webmaster','devfb@tplinformatica.com','123456','$2a$10$OflMadtOicArgZwtcmqTBO5iw4aG.xwCVsD01AAG3PKQWEKnkUb4.','2017-07-20 14:49:57',1,'0','Admin','root','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','https://it-it.facebook.com/','https://twitter.com/login?lang=it','https://www.instagram.com/?hl=it','https://www.youtube.com/?gl=IT&hl=it','./images/imagesForPP/19875376_1586602688024808_2327969256718999605_n.jpg','./images/imagesForPP/18581648_1533486513336426_1237597350291554918_n.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'it_IT',NULL,NULL,'0'),(16,'tecnici','tecnici','111111','$2a$10$1s8Ej23hdHzTj6zLpEY5JeoXTTkgz9YvTti7B3uKEiq3PFeZYwID2','2017-07-20 15:16:31',1,'0','Admin','root','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','https://it-it.facebook.com/','https://twitter.com/login?lang=it','https://www.instagram.com/?hl=it','https://www.youtube.com/?gl=IT&hl=it','./images/imagesForPP/19875376_1586602688024808_2327969256718999605_n.jpg','./images/imagesForPP/18581648_1533486513336426_1237597350291554918_n.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'it_IT',NULL,NULL,'0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'jiferay_ce_v1_0_0'
+-- Dumping events for database 'prova2_jiferay'
+--
+
+--
+-- Dumping routines for database 'prova2_jiferay'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `sp_tpl_selectMenus` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_tpl_selectMenus`(IN v_id_groups VARCHAR(256), IN v_username VARCHAR(256))
+CREATE DEFINER=`jportal`@`%` PROCEDURE `sp_tpl_selectMenus`(IN v_id_groups VARCHAR(256), IN v_username VARCHAR(256))
 BEGIN
 
 IF v_username = '' THEN
@@ -426,13 +430,13 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_tpl_usersGroupMenu_V2`(IN v_username VARCHAR(64))
+CREATE DEFINER=`jportal`@`%` PROCEDURE `sp_tpl_usersGroupMenu_V2`(IN v_username VARCHAR(64))
 BEGIN
     
     DECLARE v_numRows, v_id_group, v_user_id INT;
@@ -447,13 +451,13 @@ BEGIN
 
 	
 	SELECT ug.id_group, g.name 
-	FROM usergroups ug,  users u, groupps g
+	FROM usergroups ug,  users u, groups g
 	WHERE g.id = ug.id_group 
 	AND ug.id_user = u.id
 	AND u.username = v_username;
 
 	SELECT u.lang, mj.id, mj.id_parent, lr.lang_resource nome, mj.description, mj.id_groups, g.name,  mj.branch, mj.id_page
-	from lang_resources lr, menu_jportal mj , usergroups ug, users u, groupps g 
+	from lang_resources lr, menu_jportal mj , usergroups ug, users u, groups g 
 	WHERE (mj.id_groups = ug.id_group OR mj.id = 1 OR mj.id_groups = 'BASE') 
 	AND g.id =  ug.id_group
 	AND ug.id_user =  u.id
@@ -478,4 +482,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-13 16:22:07
+-- Dump completed on 2019-02-22 13:49:57
