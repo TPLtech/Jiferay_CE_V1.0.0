@@ -14,6 +14,8 @@ angular.module('appModule', [
 ,'noteLegaliModule'
 ,'forgotPWDModule'
 ,'forgotUserModule'
+,'serviziModule'
+,'progettiModule'
 
 ])
     .config(function($stateProvider, $urlRouterProvider) {
