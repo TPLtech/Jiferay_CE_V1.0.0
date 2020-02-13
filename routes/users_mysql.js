@@ -171,7 +171,7 @@ app.get('/ResetPW', function(req, res) {
             }
             else {
 
-                var pwCrypt = bcrypt.hashSync(2777, null, null);
+                var pwCrypt = bcrypt.hashSync(1234, null, null);
                 cmdSql = "UPDATE users SET password ='" + pwCrypt + "', flagChangePW = 0 WHERE email ='" + email + "';";
                 console.log("cmdSql" + cmdSql);
 
