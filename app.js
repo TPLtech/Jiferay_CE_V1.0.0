@@ -11,7 +11,7 @@ var http = require('http');
 
 var users_mailer = require('./routes/users_mailer');
 var users_mysql = require('./routes/users_mysql');
-var users_qrcode = require('./routes/users_qrcode');
+//var users_qrcode = require('./routes/users_qrcode');
 var users_skebby = require('./routes/users_skebby');
 var users_content = require('./routes/users_content');
 var users_sinlog = require('./routes/users_sinlog');
@@ -54,7 +54,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use('/', users_mailer);
 app.use('/', users_mysql);
-app.use('/', users_qrcode);
+//app.use('/', users_qrcode);
 app.use('/', users_skebby);
 app.use('/', users_content);
 app.use('/', users_sinlog); //Al posto di users_Rpassport

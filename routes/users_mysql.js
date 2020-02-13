@@ -10,7 +10,7 @@ global.mysqlHost = 'localhost';
 global.mysqlPort = '3306';
 global.mysqlUser = 'user';
 global.mysqlPassword = 'password';
-global.mysqlDatabase = 'jiferay';
+global.mysqlDatabase = 'jiferay_ce_v1_0_0';
 
 
 
