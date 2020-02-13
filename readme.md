@@ -1,5 +1,6 @@
 <h1>Jiferay CE V1.0.0</h1>
 <h2>Il Portale WEB scritto interamente in Javascript</h2>
+By <a href="https://www.tplinformatica.com/">TPL Informatica</a>
 
 <h3>Versioni Software Richieste</h3>
 <ul>
@@ -21,3 +22,5 @@
   <br>
   5 - Eseguire il comando <b>$ npm start</b>
 </p>
+
+By <a href="https://www.tplinformatica.com/">TPL Informatica</a>
