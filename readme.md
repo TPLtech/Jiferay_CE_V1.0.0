@@ -1,5 +1,5 @@
 <h1>Jiferay CE V1.0.0</h1>
-<h2>Il Portale WEB Open Source, licenza <a>MIT</a>, scritto interamente in Javascript</h2>
+<h2>Il Portale WEB Open Source, licenza <a href="https://opensource.org/licenses/MIT">MIT</a>, scritto interamente in Javascript</h2>
 Sviluppato da <a href="https://www.tplinformatica.com/">TPL Informatica</a>
 
 <h3>Versioni Software Richieste</h3>
