@@ -10,7 +10,7 @@
 		"angular": "^1.7.9",
 		"angular-animate": "^1.6.4",
 		"angular-ui-router": "^1.0.3",
-		"async": "^2.6.0",
+		"async": "^3.2.2",
 		"async-while": "^1.1.0",
 		"bcrypt-nodejs": "^0.0.3",
 		"body-parser": "^1.15.2",
